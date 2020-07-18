@@ -1,0 +1,41 @@
+$primary-color: #444;
+$secondary-color: #eece1a;
+$show-background-img: true;
+$background-img: url(../img/background.jpg);
+$background-opacity: 0.9;
+
+@mixin easeOut {
+	transition: all 0.5s ease-out;
+}
+
+@mixin background {
+	@if $show-background-img {
+		&#bg-img {
+			background: $background-img;
+			background-attachment: fixed;
+			background-size: cover;
+			//  First Aproach for overlay
+			// .overlay {
+			// 	position: absolute;
+			// 	top: 0;
+			// 	right: 0;
+			// 	height: 100%;
+			// 	width: 100%;
+			// 	z-index: -1;
+			// 	background-color: rgba($primary_color, $background-opacity);
+			// }
+
+			// Second Aproach for overlay
+			&:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 100%;
+				width: 100%;
+				z-index: -1;
+				background-color: rgba($primary_color, $background-opacity);
+			}
+		}
+	}
+}
