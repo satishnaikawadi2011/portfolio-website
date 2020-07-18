@@ -15,7 +15,20 @@ $background-opacity: 0.9;
 			background-attachment: fixed;
 			background-size: cover;
 			//  First Aproach for overlay
-			// .overlay {
+			.overlay {
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 100%;
+				width: 100%;
+				z-index: -1;
+				background-color: rgba($primary_color, $background-opacity);
+				overflow: hidden;
+			}
+
+			// Second Aproach for overlay
+			// &:after {
+			// 	content: '';
 			// 	position: absolute;
 			// 	top: 0;
 			// 	right: 0;
@@ -24,19 +37,15 @@ $background-opacity: 0.9;
 			// 	z-index: -1;
 			// 	background-color: rgba($primary_color, $background-opacity);
 			// }
-
-			// Second Aproach for overlay
-			&:after {
-				content: '';
-				position: absolute;
-				top: 0;
-				right: 0;
-				height: 100%;
-				width: 100%;
-				z-index: -1;
-				background-color: rgba($primary_color, $background-opacity);
-			}
 		}
+	}
+}
+
+@function set-text-color ($color) {
+	@if (lightness($color)>40) {
+		@return #000;
+	} @else {
+		@return #fff;
 	}
 }
 
